@@ -6,6 +6,7 @@ import LandingPage from "../Landing";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
 import ReadList from "../ReadList";
+import WishList from "../WantList";
 
 import * as ROUTES from "../../constants/routes";
 
@@ -18,7 +19,8 @@ const App = () => (
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route path={ROUTES.SIGN_IN} component={SignIn} />
         <Route path={ROUTES.SIGN_UP} component={SignUp} />
-        <Route path={ROUTES.HOME} component={ReadList} />
+        <Route path={ROUTES.READ} component={ReadList} />
+        <Route path={ROUTES.WISH} component={WishList} />
       </div>
     </Router>
   </div>

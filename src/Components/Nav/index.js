@@ -3,20 +3,51 @@ import { Link } from "react-router-dom";
 
 import * as ROUTES from "../../constants/routes";
 
-const Nav = () => (
-  <div>
+class Nav extends React.Component {
+  render() {
+    return (
+      <nav>
+        <div className="logo" />
+        <ul>
+          <li>
+            <Link to={ROUTES.READ} className="links">
+              ReadList
+            </Link>
+          </li>
+          <li>
+            <Link to={ROUTES.WISH} className="links">
+              WishList
+            </Link>
+          </li>
+        </ul>
+        <button onClick={this.props.popUp} className="addBook show">
+          <i
+            className="fas fa-plus"
+            style={{ fontSize: "0.9em", marginRight: "5px" }}
+          />
+          Add
+        </button>
+      </nav>
+    );
+  }
+}
+
+/*const Nav = () => (
+  <nav>
+    <div className="logo" />
     <ul>
       <li>
-        <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+        <Link to={ROUTES.READ} className="links">
+          ReadList
+        </Link>
       </li>
       <li>
-        <Link to={ROUTES.LANDING}>Landing</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.HOME}>Home</Link>
+        <Link to={ROUTES.WISH} className="links">
+          WishList
+        </Link>
       </li>
     </ul>
-  </div>
-);
+  </nav>
+);*/
 
 export default Nav;

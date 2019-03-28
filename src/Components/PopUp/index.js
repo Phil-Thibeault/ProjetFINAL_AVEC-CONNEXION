@@ -6,8 +6,8 @@ class PopUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchField: "", 
-      books: [],
+      searchField: "",
+      books: []
     };
   }
 
@@ -32,7 +32,7 @@ class PopUp extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevState.readList !== this.state.readList){
+    if (prevState.readList !== this.state.readList) {
       alert(this.state.readList);
     }
     if (prevState.searchField !== this.state.searchField) {
@@ -56,7 +56,7 @@ class PopUp extends Component {
               />
             </div>
           </div>
-          <SearchList books={this.state.books} readList={this.props.readList} wantList={this.props.wantList} currentPage={this.props.currentPage}/>
+          <SearchList books={this.state.books} List={this.props.List} />
           <button onClick={this.props.closePopUp}>Close</button>
         </div>
       </div>

@@ -4,24 +4,23 @@ import CarteLivre from "../Livre/CarteLivre";
 import Nav from "../Nav";
 import PopUp from "../PopUp";
 
-class ReadList extends Component {
-  constructor() {
-    super();
+class WantList extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
-      books: [],
+      books: this.props.wantList,
       showPopUp: false,
-      list: "ReadList"
+      list: "WishList"
     };
-
     this.popUp = this.popUp.bind(this);
   }
 
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
-    if (this.props.books !== prevProps.books) {
+    if (this.props.readList !== prevProps.readList) {
       this.setState({
-        books: this.props.books
+        books: this.props.wantList
       });
     }
     console.log(this.state.books);
@@ -33,8 +32,18 @@ class ReadList extends Component {
     });
   }
 
-  updateReadList(array) {
-    let books = this.state.books;
+  updateWishList(array) {
+    let books = this.state.wantList;
+
+    books.push(array);
+
+    this.setState({
+      wantList: books
+    });
+
+    this.setState({
+      list: "Wish List"
+    });
   }
 
   render() {
@@ -45,11 +54,11 @@ class ReadList extends Component {
           <PopUp
             text={this.state.list}
             closePopUp={this.popUp}
-            List={this.updateReadList}
-            currentPage="ReadList"
+            List={this.updateWishList}
+            currentPage="WantList"
           />
         ) : null}
-        {this.state.books !== [] ? (
+        {this.state.books !== undefined ? (
           this.state.books.map((book, index) => {
             let image = book[0];
             let title = book[1];
@@ -72,4 +81,4 @@ class ReadList extends Component {
   }
 }
 
-export default ReadList;
+export default WantList;
